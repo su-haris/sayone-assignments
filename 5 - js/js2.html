@@ -1,0 +1,79 @@
+
+
+<html>
+<head>
+   <title>Simple Calculator</title>
+</head>
+<body>
+   <script>
+   
+
+  function myAdd()
+  {
+   var a, b, ans;
+   a = document.getElementById("first").value;
+   b = document.getElementById("second").value;
+   ans = Number(a) + Number(b);
+   document.getElementById("ans").innerHTML = ans;
+  }
+
+  function mySub()
+  {
+   var a, b, ans;
+   a = document.getElementById("first").value;
+   b = document.getElementById("second").value;
+   ans = a-b;
+   document.getElementById("ans").innerHTML = ans;
+  }
+
+  function myMul()
+  {
+   var a, b, ans;
+   a = document.getElementById("first").value;
+   b = document.getElementById("second").value;
+   ans = a*b;
+   document.getElementById("ans").innerHTML = ans;
+  }
+
+  function myDiv()
+  {
+   var a, b, ans;
+   a = document.getElementById("first").value;
+   b = document.getElementById("second").value;
+   ans = a/b;
+   document.getElementById("ans").innerHTML = ans;
+  }
+
+  
+
+ 
+  
+
+</script>
+<h1>Simple Calculator</h1>
+<table>
+   <form>
+      <tr>
+         <td> First Number	: </td>
+         <td><input type="number" id="first"></td>
+      </tr>
+      <tr>
+         <td> Second Number	:</td>
+         <td> <input type="number" id="second"></td>
+      </tr>
+      <tr>
+
+         <tr>
+            <td>Result	: <p id="ans"></p> </td>
+            
+         </tr>
+         
+         
+      </form>
+   </table>
+            <button type="button" onclick="myAdd()" >ADD</button>  
+            <button type="button" onclick="mySub()" >SUB</button> 
+            <button type="button" onclick="myMul()" >MUL</button>  
+            <button type="button" onclick="myDiv()" >DIV</button>  
+</body>
+</html>

@@ -1,0 +1,107 @@
+
+
+<html>
+<head>
+  <title>Student Registration</title>
+</head>
+<body>
+  <script>
+    var url = 'https://restcountries.eu/rest/v2/all';
+    //var url = 'http://battuta.medunes.net/api/country/all/?key=790f430931adfb9067358fffa29887e2';
+    var request = new XMLHttpRequest();
+    request.open("GET", url, true);
+    var response;
+    //alert('test');
+
+    
+    //var row;
+    var i;
+
+    request.onload=function(){
+      response = JSON.parse(request.response);
+      var b;
+
+      for (i = 0; i < response.length; i++) {
+        console.log(response[i].name);
+        b = response[i].name;
+        var select = document.getElementById("country");
+        var opt = document.createElement('option');
+        opt.value = b;
+        opt.innerHTML = b;
+        select.appendChild(opt);
+        /*row = table.insertRow(i);
+        var cell1 = row.insertCell(0);
+        cell1.innerHTML = b;*/
+
+      }
+      //var b = response[0].name;
+      
+      //alert(b);
+      //console.log(b);
+
+      //document.getElementById("test").innerHTML = b;
+    }
+    request.send();
+
+    function test()
+    {
+      var e = document.getElementById("country");
+      var sel = e.options[e.selectedIndex].text;
+      
+      var j,k;
+
+
+
+      for (j = 0; j < 250; j++) {
+        if (response[j].name == sel)
+        {
+          for (k = 0; k<response[j].borders.length; k++){
+            var select1 = document.getElementById("region");
+        var opt1 = document.createElement('option');
+        opt1.value = response[j].borders[k];
+        opt1.innerHTML = response[j].borders[k];
+        select1.appendChild(opt1);
+          }
+        }
+      }
+
+
+    }
+
+
+
+
+  </script>
+  <h1> Registration Form</h1>
+  <table>
+    <form>
+      <tr>
+       <td> Name	: </td>
+       <td><input type="text" id="firstname"></td>
+     </tr>
+     <tr>
+       <td> Email	:</td>
+       <td> <input type="text" id="email"></td>
+     </tr>
+     <tr>
+
+       <tr>
+        <td>Country	: </td>
+        <td> <select id='country' onchange="test()">
+
+        </select> </td>
+      </tr>
+      <tr>
+        <td>
+         Border	:
+       </td>
+        <td> <select id='region'>
+          
+        </select> </td>
+     </tr>
+     
+  </form>
+</table>
+
+</body>
+</html>

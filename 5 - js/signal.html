@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signal</title>
+</head>
+<body>
+	<script>
+		var bling;
+		var norm;
+
+		function myRed(){
+			var red, yellow, green;
+			red = document.getElementById("red");
+			yellow = document.getElementById("yellow");
+			green = document.getElementById("green");
+
+			
+       		red.style.opacity=1;
+        	yellow.style.opacity=.2;
+        	green.style.opacity=.2;
+		}
+
+		function myYellow(){
+			var red, yellow, green;
+			red = document.getElementById("red");
+			yellow = document.getElementById("yellow");
+			green = document.getElementById("green");
+
+			
+       		red.style.opacity=.2;
+        	yellow.style.opacity=1;
+        	green.style.opacity=.2;
+		}
+
+		function myGreen(){
+			var red, yellow, green;
+			red = document.getElementById("red");
+			yellow = document.getElementById("yellow");
+			green = document.getElementById("green");
+
+			
+       		red.style.opacity=.2;
+        	yellow.style.opacity=.2;
+        	green.style.opacity=1;
+		}
+
+		function myOff(){
+			var red, yellow, green;
+			red = document.getElementById("red");
+			yellow = document.getElementById("yellow");
+			green = document.getElementById("green");
+
+			
+       		red.style.opacity=.2;
+        	yellow.style.opacity=.2;
+        	green.style.opacity=.2;
+		}
+
+		function myBlink(){
+			var red, yellow, green;
+			
+			red = document.getElementById("red");
+			yellow = document.getElementById("yellow");
+			green = document.getElementById("green");
+
+			
+       		red.style.opacity=.2;
+        	yellow.style.opacity=.2;
+        	green.style.opacity=.2;
+
+        	setTimeout(function(){green.style.opacity=.3;
+	        red.style.opacity=.3;
+	        yellow.style.opacity=1;},2000);
+
+        	
+		}
+
+		function myNormal()
+		{
+			myRed();
+			setTimeout(myYellow, 2000);
+			setTimeout(myGreen, 3000);
+			setTimeout(myYellow, 6000);
+			setTimeout(myRed, 7000);
+		}
+
+		
+		
+
+
+	</script>
+
+	<div style="position: absolute; background-color: black; height: 500px; width: 200px;" id="main">
+		<div style="height: 100px; width: 100px; background-color: red; margin: 50px;" id="red"></div>
+		<div style="height: 100px; width: 100px; background-color: yellow; margin: 50px;" id="yellow"></div>
+		<div style="height: 100px; width: 100px; background-color: green; margin: 50px;" id="green"></div>
+	</div>
+	<button type="button" style="float: right;" onclick="myRed()" >RED</button> 
+	<button type="button" style="float: right;" onclick="myYellow()" >YELLOW</button> 
+	<button type="button" style="float: right;" onclick="myGreen()" >GREEN</button> 
+	<button type="button" style="float: right;" onclick="clearInterval(norm);myOff()" >OFF ALL</button> 
+	<button type="button" style="float: right;" onclick="bling = setInterval(myBlink,4000);" >BLINK YELLOW</button>
+	<button type="button" style="float: right;" onclick="clearInterval(bling);" >STOP YELLOW</button> 
+	<button type="button" style="float: right;" onclick="norm = setInterval(myNormal, 7000); alert('Please wait for 5 seconds');" >NORMAL TRAFFIC</button> 
+</body>
+</html>

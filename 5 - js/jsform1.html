@@ -1,0 +1,82 @@
+
+
+<html>
+<head>
+   <title>Student Registration</title>
+</head>
+<body>
+   <script>
+      function myFunction() {
+       var x, y, numcheck, z, mailcheck, Age, a;
+
+  // Get the value of the input field with id="numb"
+  x = document.getElementById("Age").value;
+  y = document.getElementById("mobile").value;
+  z = document.getElementById("firstname").value;
+  a = document.getElementById("email").value;
+
+  if (!isNaN(z)){
+      alert("Name required");
+  }
+
+  
+
+   mailcheck = a.includes("@");
+      if (mailcheck == false){
+   alert("Not a valid email");
+   }
+
+   numcheck = y.includes(+91);
+  //alert(numcheck);
+  if (numcheck == false && y!=''){
+   //alert(y);
+   alert("Not an Indian Number. Begin with +91.");
+   }
+
+  // If x is Not a Number or less than one or greater than 10
+  if (isNaN(x) || x > 1 && x < 110) {
+     /*text = "Input OK";*/
+     //alert("Input OK");
+  } else {
+     /*text = "Input not Valid";*/
+     alert("Age Not Ok");
+  }
+  }
+
+  
+
+ 
+  
+
+</script>
+<h1>Student Registration Form</h1>
+<table>
+   <form>
+      <tr>
+         <td> Name	: </td>
+         <td><input type="text" id="firstname"></td>
+      </tr>
+      <tr>
+         <td> Email	:</td>
+         <td> <input type="text" id="email"></td>
+      </tr>
+      <tr>
+
+         <tr>
+            <td>Mobile	: </td>
+            <td> <input type="tel" id="mobile"  pattern="[0-9]{10}"></td>
+         </tr>
+         <tr>
+            <td>
+               Age	:
+            </td>
+            <td><input id="Age"></td>
+         </tr>
+         <tr>
+            <td><button type="button" onclick="myFunction()" >Submit</button>  <input type="reset" value="Reset"></td>
+         </tr>
+      </form>
+   </table>
+   
+</body>
+</html>
