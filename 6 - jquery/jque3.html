@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jabong</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet"> 
+</head>
+<body>
+	<style>
+		*{
+			font-family: 'Quicksand', sans-serif;
+		}
+		#linav {
+			float: left;
+			/*border-right: 1px solid #333333;*/
+			
+		}
+		#mycart {
+			width: 200px;
+			/*padding: 50px 0;*/
+			/*float: right;*/
+			text-align: center;
+			background-color: lightblue;
+			margin-top: 20px;
+			position: absolute;
+			margin-left: -100px;
+		}
+
+		#mylogin {
+			width: 300px;
+			/*padding: 50px 0;*/
+			/*float: right;*/
+			text-align: center;
+			background-color: lightblue;
+			margin-top: 20px;
+			left: 77%;
+			position: fixed;
+			display: none;
+			/*margin-left: -50px;*/
+		}
+
+		#linav1 {
+			display: block;
+			color: black;
+			text-align: center;
+			/*padding: 14px 16px;*/
+			/*margin: 50%;*/
+			padding-top: 20px;
+			padding-left: 20px;
+			text-decoration: none;
+			/*font-family: Helvetica Neue, Helvetica, Arial, sans-serif;*/
+		}
+
+		.button {
+			background-color: orange; /* Green */
+			border: none;
+			color: white;
+			padding: 8px 25px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 12px;
+			/*margin: 0px 1px;*/
+			cursor: pointer;
+		}
+
+		.mySlides {display:none;}
+	</style>
+
+
+
+	<div id=topnav style="height: 40px; width: 100%; ">
+		<div id=navlinks style="float: right; display: block; font-size: 12px;  padding: 14px; text-transform: uppercase; ">
+			Download App | Help | <span id=log onclick="myFunction2();">Sign In</span> | Sign Up
+		</div>
+	</div>
+
+	<div id=mylogin>Username	: <input type="text" name="firstname"><br>
+		Password	: <input type="password" name="pass"><br>
+		<button type="button" >Submit</button>
+	</div>
+
+
+	<div id=1 style="height: 10px; width: 100%; border-bottom: 1px solid grey;">
+	</div>
+
+	<div>
+		<img src="jab1.png" style="box-sizing: border-box; height: 55px; width: 200px; float: left; padding-top: 10px;">
+
+		<div style="float: left; width: 550px;">
+			<ul style="list-style-type: none;
+			margin: 0;
+			padding: 0;
+			text-transform: uppercase;
+			overflow: hidden; height: 55px;">
+			<li id="linav"><a id="linav1" class="active" href="#home">Women</a></li>
+			<li id="linav"><a id="linav1" href="#news">Men</a></li>
+			<li id="linav"><a id="linav1" href="#contact">Kids</a></li>
+			<li id="linav"><a id="linav1" href="#about">Accessories</a></li>
+			<li id="linav"><a id="linav1" href="#contact">Sports</a></li>
+			<li id="linav"><a id="linav1" href="#contact">Home & Living</a></li>
+			
+		</ul>
+	</div>
+
+	<div id=ico style="float: right; margin-left: 10px;">
+		<img src="ic1.png">
+		<div id="mycart">
+			<!-- <span id="carts"></span> -->
+		</div>
+		<img src="ic2.png" onclick="myFunction();">
+
+	</div>
+
+	<div id=search  style="float: right; height: 100%">
+		<input type="text" name="search" placeholder="BE YOU. SEARCH YOUR STYLE" style="padding: 6px; margin-top: 10px; font-size: 17px; border: 1px solid grey; ">
+		<button type="submit" style="padding: 6px; margin-top: 10px; font-size: 17px; border: 1px solid grey;"><i class="fa fa-search"></i></button>
+
+	</div>
+</div>
+
+
+<div id=imgsel style="height: 534px; width: 828px; background-color: #F7F7F7; float: left; margin-top: 10px; border-bottom: 1px solid grey;">
+	<div class="w3-content w3-display-container" style="width:50%; height: 100%;">
+		<img class="mySlides" src="a1.webp" style="width:100%; height: 100%;">
+		<img class="mySlides" src="a22.webp" style="width:100%; height: 100%;">
+		<img class="mySlides" src="a33.webp" style="width:100%; height: 100%;">
+		<img class="mySlides" src="a44.webp" style="width:100%; height: 100%;">
+
+		<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+		<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+	</div>
+</div>
+
+<div id=info style="height: 534px; width: 459px; float: right; background-color: #F7F7F7; margin-top: 10px; border-bottom: 1px solid grey;">
+	<div id=pinfo style="margin: 25px; background-color: #F7F7F7; width: 90%; height:90%">
+		<span style="font-weight: bold;">Adidas</span><br>
+		Black Lite Racer Running Shoes<br>
+		<span style="font-weight: bold;">Rs. 3999</span><br>
+		<hr>
+		Size
+		<div style="height: 25px; width: 65px; border: 1px solid black; text-align: center; padding-top: 1px;">11</div>
+		<br>
+		<button class="button" onclick="addtocart();">ADD TO CART</button>
+		<br><hr>
+		Cash On Delivery might be available
+	</div>
+</div>
+
+<div id=proinfo style="height: 100%; width: 100%; background-color: white; clear: both">
+	<div id=desc style="width: 60%; background-color: white;">
+		<div style="text-align: center; padding-top: 10px; padding-bottom: 10px;"><span style="font-weight: bold; font-size: 25px;">PRODUCT AND INFO</span><br>
+			<img src="add.png" style="width: 100px; height: 100px; padding-top: 10px;">
+		</div>
+	</div>
+
+	<div style="width: 60%; padding-left: 10%;">
+		<p>Crafted to perfection with studs for superior ball control and firm grip on artificial grass and hard ground, this pair of white ‘Nemeziz 17.4 TF’ football shoes from adidas will let your little buddy be the champion of every match. Effortlessly stylish for its all-over graphic stripes and eye-catching 3-stripes, this pair of shoes has flexible, traction-configured synthetic upper that ensure ultimate ball control. It also has breathable mesh lining and comfortable rubber sole and Nemeziz and adidas branding at the back.</p>
+		<p>Shoe CareSurface Dirt can be cleaned with a good quality brush or a damp cloth.</p>
+
+		<table>
+			<tr>
+				<td style="width: 200px; height: 75px;">Material & Care</td>
+				<td style="height: 75px;">Surface Dirt can be cleaned with a good quality brush or a damp cloth.</td>
+			</tr>
+
+			<tr>
+				<td style="width: 200px; height: 75px;">Manufacturer Detail</td>
+				<td style="height: 75px;">Imported By: Adidas India Marketing Private Ltd. Office No.6, 2Nd Floor, Sector-B, Pocket-7, Plot No-11, Vasant Kunj, New Delhi-110070</td>
+			</tr>
+
+			<tr>
+				<td style="width: 200px; height: 50px;">Country Of Origin</td>
+				<td style="height: 50px;">Cambodia</td>
+			</tr>
+
+			<tr>
+				<td style="width: 200px; height: 50px;">Cleats</td>
+				<td style="height: 50px;">Fixed</td>
+			</tr>
+
+			<tr>
+				<td style="width: 200px; height: 50px;">Warranty</td>
+				<td style="height: 50px;">3 months</td>
+			</tr>
+
+			<tr>
+				<td style="width: 200px; height: 50px;">Material</td>
+				<td style="height: 50px;">Synthetic</td>
+			</tr>
+
+			<tr>
+				<td style="width: 200px; height: 50px;">Fastening</td>
+				<td style="height: 50px;">Lace-Ups</td>
+			</tr>
+
+			<tr>
+				<td style="width: 200px; height: 50px;">Product Code</td>
+				<td style="height: 50px;">5551338</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function(){
+				if (localStorage.getItem("cart") == null) {
+  					
+					$('#mycart').append("<p>Cart is empty</p>");
+				}
+
+				else {
+					$('#mycart').append(localStorage.getItem("cart"));
+					$('#mycart').append($('<input type="button" value="remove" onclick="delitem();">'));
+				}
+
+
+			
+			
+
+
+			});
+
+	var slideIndex = 1;
+	showDivs(slideIndex);
+
+	function plusDivs(n) {
+		showDivs(slideIndex += n);
+	}
+
+	function showDivs(n) {
+		var i;
+		var x = document.getElementsByClassName("mySlides");
+		if (n > x.length) {slideIndex = 1}
+			if (n < 1) {slideIndex = x.length}
+				for (i = 0; i < x.length; i++) {
+					x[i].style.display = "none";  
+				}
+				x[slideIndex-1].style.display = "block";  
+			}
+
+
+			function myFunction() {
+				var x = document.getElementById("mycart");
+				if (x.style.display == "none") {
+					x.style.display = "block";
+				} else {
+					x.style.display = "none";
+				}
+			}
+
+			function myFunction2() {
+				var y = document.getElementById("mylogin");
+				if (y.style.display == "none") {
+					y.style.display = "block";
+				} else {
+					y.style.display = "none";
+				}
+			}
+
+			function addtocart()
+			{
+				if (localStorage.getItem("cart") == null) {
+					$('#mycart').empty();
+				}
+
+				localStorage.setItem("cart", "Adidas Shoes");
+
+				
+				$('#mycart').append($('<input type="button" value="remove" onclick="delitem();">'));
+				//document.getElementById("carts").innerHTML = localStorage.getItem("cart");
+				//document.getElementById("carts").innerHTML = "";
+				updatecart();
+
+				
+			}
+
+			function delitem()
+			{
+				console.log("aa");
+				localStorage.removeItem("cart");
+				$('#mycart').empty();
+				updatecart();
+			}
+
+			function updatecart()
+			{
+				if (localStorage.getItem("cart") == null) {
+  					
+					$('#mycart').append("<p>Cart is empty</p>");
+				}
+
+				else {
+					$('#mycart').append(localStorage.getItem("cart"));
+
+				}
+			}
+
+			
+		</script>
+
+	</body>
+	</html>

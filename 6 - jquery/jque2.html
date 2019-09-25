@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON Testing</title>
+	
+</head>
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+    var body = $('body');
+    var div;
+    $.get('https://jsonplaceholder.typicode.com/posts', function(data){
+    	console.log(data);
+
+    	$.each(data, function(key,item){
+    		div = $('<div></div>');
+    		div.addClass("divi");
+    		div.append($('<h3>USER ID: '+item.userId+' </h3>'));
+    		div.append($('<h3>ID: '+item.id+' </h3>'));
+    		div.append($('<h3></h3>').text(item.title));
+    		div.append($('<p></p>').text(item.body));
+    		body.append(div);
+
+
+    	})
+
+    })
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+
+
+<html>
+<head>
+   <title>Student Registration</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+   <h1>Student Addition</h1>
+   <table>
+      <form>
+         <tr>
+            <td> Student ID   : </td>
+            <td><input type="text" id="studentid"></td>
+         </tr>
+         <tr>
+            <td> First name	: </td>
+            <td><input type="text" id="firstname"></td>
+         </tr>
+         <tr>
+            <td> Last name	:</td>
+            <td> <input type="text" id="lastname"></td>
+         </tr>
+
+         <tr>
+            <td>Mobile  : </td>
+            <td> <input type="tel" id="mobile"  pattern="[0-9]{10}"></td>
+         </tr>
+         <tr>
+            <td>    Email	: </td>
+            <td>  <input type="text" id="email" ></td>
+         </tr>
+
+         <tr>
+            <td>Parents Mobile  : </td>
+            <td> <input type="tel" id="pmob"  pattern="[0-9]{10}"></td>
+         </tr>
+         <tr>
+            <td>Parents Email  : </td>
+            <td>  <input type="text" id="pemail" ></td>
+         </tr>
+         <tr>
+            <td>Expected Graduation Year  : </td>
+            <td>  <input type="text" id="grad" ></td>
+         </tr>
+
+         <tr>
+            <td><button type="button" onclick="addnew();">Submit</button>  <input type="button" value="get all" onclick="getall();"><input type="button" value="update" onclick="upd();"><input type="reset" value="reset" name="reset"></td>
+         </tr>
+      </form>
+   </table>
+
+   <div id="details"></div>
+
+
+
+
+   <script type="text/javascript">
+
+      $(document).ready(function(){
+         /*localStorage.clear();*/
+
+         if (localStorage.getItem('i') == null) {
+          localStorage.setItem('i', 1);
+       }
+
+    });
+
+
+      function addnew()
+      {
+         var person = {
+            studentid: $('#studentid').val(),
+            fname: $('#firstname').val(),
+            lname: $('#lastname').val(),
+            mob: $('#mobile').val(),
+            email: $('#email').val(),
+            pmob: $('#pmob').val(),
+            pemail: $('#pemail').val(),
+            year: $('#grad').val()
+         }
+
+         var k=0;
+
+            for (j = 0; j < localStorage.length; j++)   {
+               if (localStorage.key(j).includes("user") == true)
+               {
+                  //console.log(localStorage.key(j) + "=[" + localStorage.getItem(localStorage.key(j)) + "]");
+                  d = JSON.parse(localStorage.getItem(localStorage.key(j)));
+
+                  if (d.studentid == $('#studentid').val())
+                  {
+                     alert('Student ID already exist');
+                     k=1;
+                  }
+                  
+               }
+            }   
+
+         
+         if (k==0){
+
+
+         var n = localStorage.getItem("i");
+         window.localStorage.setItem('user'+n, JSON.stringify(person));
+            //console.log(window.localStorage.getItem('user'+n));
+            n++;
+            localStorage.setItem('i', n);
+         }
+
+                   
+      }
+
+         function getall()
+         {
+            $('#details').empty();
+            var d;
+            console.log("local storage");
+            for (j = 0; j < localStorage.length; j++)   {
+               if (localStorage.key(j).includes("user") == true)
+               {
+                  //console.log(localStorage.key(j) + "=[" + localStorage.getItem(localStorage.key(j)) + "]");
+                  d = JSON.parse(localStorage.getItem(localStorage.key(j)));
+                  $("#details").append('<div id='+d.studentid+'>ID:'+d.studentid+' First Name: '+d.fname+' Last Name: '+d.lname+' Mobile: '+d.mob+' Email: '+d.email+' Parent Mobile:'+d.pmob+'<input type="button" value="Remove" onclick="removeid('+d.studentid+');"><input type="button" value="edit" onclick="editf('+d.studentid+');"><br></div>');
+               }
+            }   
+         }
+
+         function removeid(did)
+         {
+            /*console.log(did);*/
+
+            for (j = 0; j < localStorage.length; j++)   {
+               if (localStorage.key(j).includes("user") == true)
+               {
+                  //console.log(localStorage.key(j) + "=[" + localStorage.getItem(localStorage.key(j)) + "]");
+                  d = JSON.parse(localStorage.getItem(localStorage.key(j)));
+
+                  if (d.studentid == did)
+                  {
+                     localStorage.removeItem(localStorage.key(j));
+                  }
+                  
+               }
+            }   
+            $(did).remove();
+            getall();
+
+         }
+
+         function upd()
+         {
+            /*console.log(did);*/
+
+            for (j = 0; j < localStorage.length; j++)   {
+               if (localStorage.key(j).includes("user") == true)
+               {
+                  //console.log(localStorage.key(j) + "=[" + localStorage.getItem(localStorage.key(j)) + "]");
+                  d = JSON.parse(localStorage.getItem(localStorage.key(j)));
+
+                  if (d.studentid == $('#studentid').val())
+                  {
+                     var person = {
+                        studentid: $('#studentid').val(),
+                        fname: $('#firstname').val(),
+                        lname: $('#lastname').val(),
+                        mob: $('#mobile').val(),
+                        email: $('#email').val(),
+                        pmob: $('#pmob').val(),
+                        pemail: $('#pemail').val(),
+                        year: $('#grad').val()
+                     }
+
+                     localStorage.setItem(localStorage.key(j), JSON.stringify(person));
+                  }
+                  
+               }
+            }   
+            
+            
+            
+            getall();
+
+         }
+
+         function editf(did)
+         {
+            console.log(did);
+
+            for (j = 0; j < localStorage.length; j++)   {
+               if (localStorage.key(j).includes("user") == true)
+               {
+                  //console.log(localStorage.key(j) + "=[" + localStorage.getItem(localStorage.key(j)) + "]");
+                  d = JSON.parse(localStorage.getItem(localStorage.key(j)));
+
+                  if (d.studentid == did)
+                  {
+                     /*localStorage.removeItem(localStorage.key(j));*/
+                     $('#studentid').val(d.studentid)
+                     $('#firstname').val(d.fname)
+                     $('#lastname').val(d.lname)
+                     $('#mobile').val(d.mob)
+                     $('#email').val(d.email)
+                     $('#pmob').val(d.pmob)
+                     $('#pemail').val(d.pemail)
+                     $('#grad').val(d.year)
+                  }
+                  
+                  
+
+               }
+            }   
+            
+
+         }
+      </script>
+   </body>
+   </html>
