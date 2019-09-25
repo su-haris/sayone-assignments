@@ -1,0 +1,60 @@
+
+
+<html>
+   <head>
+      <title>Student Registration</title>
+   </head>
+   <body>
+      <h1>Student Registration Form</h1>
+      <table>
+         <form>
+            <tr>
+               <td> First name	: </td>
+               <td><input type="text" name="firstname"></td>
+            </tr>
+            <tr>
+               <td> Last name	:</td>
+               <td> <input type="text" name="lastname"></td>
+            </tr>
+            <tr>
+               <td> Gender   	:</td>
+               <td> <input type="radio" name="gender" value="male"> Male
+                  <input type="radio" name="gender" value="female"> Female
+               </td>
+            </tr>
+            <tr>
+               <td>    Address	: </td>
+               <td>  <input type="text" name="address" ></td>
+            </tr>
+            <tr>
+               <td>    Languages	: </td>
+               <td><input type="checkbox" name="lang1" value="English"> English
+                  <input type="checkbox" name="lang2" value="Malayalam"> Malayalam
+               </td>
+            </tr>
+            <tr>
+                <td>   Batch  : </td>
+                <td>
+                    <select>
+                        <option value="cs">CSE</option>
+                        <option value="it">IT</option>
+                      </select>
+                </td>
+            </tr>
+            <tr>
+               <td>Mobile	: </td>
+               <td> <input type="tel" name="mobile"  pattern="[0-9]{10}"></td>
+            </tr>
+            <tr>
+               <td>
+                  Password	:
+               </td>
+               <td><input type="password" name="pass"></td>
+            </tr>
+            <tr>
+               <td><button type="button" >Submit</button>  <input type="reset" value="Reset"></td>
+            </tr>
+         </form>
+      </table>
+   </body>
+</html>
